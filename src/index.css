@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Playfair Display', 'Noto Serif KR', Georgia, serif;
+    --font-handwriting: 'Nanum Pen Script', 'Plus Jakarta Sans', 'Noto Sans KR', cursive;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #F7F6F2;
+    color: #18181B;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #F7F6F2;
+  }
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.font-ui {
+  font-family: var(--font-sans);
+}
+
+.album-font-gothic {
+  font-family: var(--font-sans);
+}
+
+.album-font-myeongjo {
+  font-family: var(--font-serif);
+}
+
+.album-font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* Custom subtle scrollbars for filmstrip */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #D4D4D8;
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #A1A1AA;
+}
