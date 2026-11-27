@@ -1,3 +1,7 @@
+import sampleMorningCafe from '../assets/images/sample_morning_cafe_1795738772093.jpg';
+import sampleCoastalWalk from '../assets/images/sample_coastal_walk_1795738772309.jpg';
+import sampleAutumnAlley from '../assets/images/sample_autumn_alley_1795738772919.jpg';
+
 export interface PhotoPage {
   id: string;
   src: string;
@@ -76,7 +80,7 @@ export const SAMPLE_CLOSING_MESSAGE =
 
 export const SAMPLE_PAGES: Omit<PhotoPage, 'id'>[] = [
   {
-    src: '/src/assets/images/sample_morning_cafe_1795738772093.jpg',
+    src: sampleMorningCafe,
     fileName: 'morning_cafe.jpg',
     title: '창가의 첫 번째 커피',
     description:
@@ -84,7 +88,7 @@ export const SAMPLE_PAGES: Omit<PhotoPage, 'id'>[] = [
     isObjectUrl: false,
   },
   {
-    src: '/src/assets/images/sample_coastal_walk_1795738772309.jpg',
+    src: sampleCoastalWalk,
     fileName: 'coastal_walk.jpg',
     title: '노을을 따라 걷는 해안 산책로',
     description:
@@ -92,7 +96,7 @@ export const SAMPLE_PAGES: Omit<PhotoPage, 'id'>[] = [
     isObjectUrl: false,
   },
   {
-    src: '/src/assets/images/sample_autumn_alley_1795738772919.jpg',
+    src: sampleAutumnAlley,
     fileName: 'autumn_alley.jpg',
     title: '은행잎이 내려앉은 돌담 골목',
     description:

@@ -3,12 +3,15 @@ import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
+import {viteSingleFile} from 'vite-plugin-singlefile';
 
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [
       react(),
       tailwindcss(),
+      viteSingleFile(),
       // Copies src/assets into dist/ so root-relative URLs like
       // "/src/assets/images/..." (e.g. generate_image output) still resolve
       // in production builds. Do not remove.
@@ -27,7 +30,29 @@ export default defineConfig(() => {
           }
         },
       },
+      {
+        name: 'prepare-github-pages-files',
+        apply: 'build',
+        closeBundle(error?: Error): void {
+          if (error) {
+            return;
+          }
+          const distDir = path.resolve(__dirname, 'dist');
+          const distHtml = path.join(distDir, 'index.html');
+          if (!fs.existsSync(distHtml)) {
+            return;
+          }
+          fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
+          const docsDir = path.resolve(__dirname, 'docs');
+          fs.mkdirSync(docsDir, {recursive: true});
+          fs.copyFileSync(distHtml, path.join(docsDir, 'index.html'));
+          fs.writeFileSync(path.join(docsDir, '.nojekyll'), '');
+        },
+      },
     ],
+    build: {
+      assetsInlineLimit: 100_000_000,
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
